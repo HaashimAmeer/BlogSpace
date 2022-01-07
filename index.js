@@ -6,7 +6,7 @@ fetch("https://apis.scrimba.com/jsonplaceholder/posts")
     let html = "";
     for (let i = 0; i < postsArr.length; i++) {
       html += `
-      <h3> ${postsArr[i].title} </h3>
+      <h2> ${postsArr[i].title} </h2>
       <p> ${postsArr[i].body} </p>
       <hr/>
       `;
