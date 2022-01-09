@@ -1,17 +1,23 @@
-fetch("https://apis.scrimba.com/jsonplaceholder/posts")
-  .then((res) => res.json())
-  .then((data) => {
-    const postsArr = data.slice(0, 5);
+let postsArr = [];
 
-    let html = "";
-    for (let i = 0; i < postsArr.length; i++) {
-      html += `
+function renderPosts() {
+  let html = "";
+  for (let i = 0; i < postsArr.length; i++) {
+    html += `
       <h2> ${postsArr[i].title} </h2>
       <p> ${postsArr[i].body} </p>
       <hr/>
       `;
-    }
-    document.getElementById("root").innerHTML = html;
+  }
+  document.getElementById("root").innerHTML = html;
+}
+
+fetch("https://apis.scrimba.com/jsonplaceholder/posts")
+  .then((res) => res.json())
+  .then((data) => {
+    postsArr = data.slice(0, 5);
+    renderPosts();
+
     // console.log(postsArr);
   });
 
@@ -38,11 +44,8 @@ document
     })
       .then((res) => res.json())
       .then((post) => {
-        document.getElementById("root").innerHTML += `<h2> ${post.title} </h2>
-          <p> ${post.body} </p>
-          <hr/>
-
-        `;
+        postsArr.unshift(post);
+        renderPosts();
         console.log(post);
       });
   });
