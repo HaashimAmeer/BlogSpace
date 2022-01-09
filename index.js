@@ -33,7 +33,9 @@ document
       body: postBody,
     };
 
-    console.log(post);
+    document.getElementById("new-post").reset();
+
+    // console.log(post);
 
     fetch("https://apis.scrimba.com/jsonplaceholder/posts", {
       method: "POST",
