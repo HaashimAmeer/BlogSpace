@@ -37,5 +37,12 @@ document
       },
     })
       .then((res) => res.json())
-      .then((data) => console.log(data));
+      .then((post) => {
+        document.getElementById("root").innerHTML += `<h2> ${post.title} </h2>
+          <p> ${post.body} </p>
+          <hr/>
+
+        `;
+        console.log(post);
+      });
   });
